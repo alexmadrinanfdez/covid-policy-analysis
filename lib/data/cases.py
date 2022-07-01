@@ -1,5 +1,7 @@
 import pandas as pd
 
+from .nations import cc_dict
+
 url_cases = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv'
 url_death = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
 url_recov = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv'
@@ -46,3 +48,10 @@ end_date = '2021-09-22'
 jhu_cases = jhu_cases[:end_date]
 jhu_death = jhu_death[:end_date]
 jhu_recov = jhu_recov[:end_date]
+
+# weekly average
+window = 7
+# set the labels at the center of the window
+cum_cases = jhu_cases[cc_dict.values()].rolling(window, min_periods=1, center=True).mean()
+cum_deaths = jhu_death[cc_dict.values()].rolling(window, min_periods=1, center=True).mean()
+cum_recoveries = jhu_recov[cc_dict.values()].rolling(window, min_periods=1, center=True).mean()
