@@ -1,2 +1,4 @@
 # Python library cache
 __pycache__
+# virtual environment
+.venv
