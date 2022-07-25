@@ -27,3 +27,20 @@ def std_err(y):
   n = y.shape[0]
   s = y.std(axis=0)
   return 1.96 * s / np.sqrt(n)
+
+def nested_list_to_array(arrlist, flength):
+  'Transform an variable-length list to an array.'
+
+  n = len(arrlist)           # fixed (no. countries)
+  m = np.zeros(n, dtype=int) # variable (no. intervals)
+  l = flength                 # fixed (no. policies)
+  # traverse the whole nested list...
+  for i in range(n):
+    m[i] = len(arrlist[i])
+  dim = m.max()
+  # ...and fill empty positions as NaN
+  for m_i in arrlist:
+    if(len(m_i) < dim):
+      m_i += [[np.nan] * l] * (dim - len(m_i))
+  
+  return np.asarray(arrlist)
