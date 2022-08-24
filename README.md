@@ -10,7 +10,7 @@ Takes data from:
 
 The basic idea is that some policies should have had a major impact on the containment of the virus while others were probably not as relevant.
 
-<img src='xkcd/xkcd-img.png' height="250" />
+<img src='img/xkcd/xkcd-img.png' height="250" />
 
 Government policies are assigned a coefficient that represents the correlation with the **decrease** in the number of cases.
 

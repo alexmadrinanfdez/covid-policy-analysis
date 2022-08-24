@@ -1,6 +1,6 @@
 import pandas as pd
 
-url_pol = 'https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv'
+url_pol = 'https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker-legacy/main/legacy_data_202207/OxCGRT_latest.csv'
 oxcgrt = pd.read_csv(url_pol, dtype={'RegionName': str, 'RegionCode': str})
 oxcgrt['Date'] = pd.to_datetime(oxcgrt['Date'], format='%Y%m%d')
 
